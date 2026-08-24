@@ -1,0 +1,1 @@
+Project ini mengimplementasikan DHCP Server pada Router Cisco untuk otomatisasi pemberian IP address kepada seluruh PC client dalam jaringan. Project ini menunjukkan pemahaman tentang konsep DHCP pool, address exclusion, dan verifikasi IP binding.

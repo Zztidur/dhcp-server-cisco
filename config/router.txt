@@ -1,0 +1,47 @@
+R1>enable
+R1#show ip dhcp pool
+
+Pool LAN-POOL :
+ Utilization mark (high/low)    : 100 / 0
+ Subnet size (first/next)       : 0 / 0 
+ Total addresses                : 254
+ Leased addresses               : 4
+ Excluded addresses             : 1
+ Pending event                  : none
+
+ 1 subnet is currently in the pool
+ Current index        IP address range                    Leased/Excluded/Total
+ 192.168.10.1         192.168.10.1     - 192.168.10.254    4    / 1     / 254
+
+R1#show ip dhcp binding
+IP address       Client-ID/              Lease expiration        Type
+                 Hardware address
+192.168.10.10    00D0.D3BD.2DAC           --                     Automatic
+192.168.10.11    000B.BE46.0AE3           --                     Automatic
+192.168.10.13    00D0.BC33.496D           --                     Automatic
+192.168.10.12    0007.EC6B.44EE           --                     Automatic
+
+R1#show running-config
+Building configuration...
+
+Current configuration : 857 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R1
+!
+!
+!
+!
+ip dhcp excluded-address 192.168.10.1 192.168.10.9
+!
+ip dhcp pool LAN-POOL
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.1
+ dns-server 8.8.8.8
+!
+!
+!
